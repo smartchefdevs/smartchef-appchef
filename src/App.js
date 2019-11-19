@@ -10,18 +10,23 @@ import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
+/**
+ * All components
+ */
 import Welcome from './modules/welcome/Welcome';
 import Login from './modules/authenticate/Login';
 import Register from './modules/register/Register';
+import Home from './modules/chef/home/Home';
 
 const AppNavigator = createStackNavigator(
   {
-    Home: Welcome,
+    Welcome: Welcome,
     Login: Login,
-    Register: Register
+    Register: Register,
+    Home: Home
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Welcome',
     headerMode: 'none', /*Hide header bar*/
     /* The header config from HomeScreen is now here */
     defaultNavigationOptions: {
