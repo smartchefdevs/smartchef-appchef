@@ -17,13 +17,19 @@ import Welcome from './modules/welcome/Welcome';
 import Login from './modules/authenticate/Login';
 import Register from './modules/register/Register';
 import Home from './modules/chef/home/Home';
+import Menu from './modules/Menu';
+import Event from './modules/chef/Event/Event';
+import Reservation from './modules/chef/Reservation/Reservation';
 
 const AppNavigator = createStackNavigator(
   {
     Welcome: Welcome,
     Login: Login,
     Register: Register,
-    Home: Home
+    Home: Home,
+    Menu: Menu,
+    Event: Event,
+    Reservation: Reservation
   },
   {
     initialRouteName: 'Welcome',

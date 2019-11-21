@@ -22,6 +22,3 @@ $ sudo react-native run-android
 This will take so much time at first time while compile all resources.
 
 ## Project for Universidad El Bosque
-#### Developers:
-##### Daniel Mauricio Corrales Martínez - dmcorrales.me
-##### Víctor Andrés Pedraza León - vapedraza.com
