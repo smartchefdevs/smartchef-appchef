@@ -97,7 +97,7 @@ class FormLogin extends React.Component{
         if(await this.storage.saveData(this.storage.USER_ID,{id:json.user.id})){
             this.launchAlert("Bienvenido " + json.user.full_name);
             this.setState({loadingLogin:false});
-            this.props.navigation.replace('Home');
+            this.props.navigation.replace('Event');
         } else {
             this.launchAlert("Hubo un error interno");
             this.setState({loadingLogin:false});

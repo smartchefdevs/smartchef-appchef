@@ -24,7 +24,8 @@ class Welcome extends React.Component{
         if((await this.storage.getData(this.storage.USER_ID)) == null){
             this.props.navigation.replace('Login');
         } else {
-            this.props.navigation.replace('Home');
+            //this.props.navigation.replace('Home');
+            this.props.navigation.replace('Event');
         }
     }
 

@@ -1,0 +1,85 @@
+/event/dish		
+
+id_category
+id_state
+name
+description
+id_event
+
+"{
+    ""id"": 1,
+    ""msg"":""Plato agregado""
+}"			
+
+
+
+/event/index/{id}		
+
+"{
+   ""id"": 1,
+    ""data"": {
+        ""id"": 5,
+        ""id_state"": 1,
+        ""id_chef"": 14,
+        ""image_url"": ""5-Ahs4yhddh4.png"",
+        ""name"": ""Almuerzo para tu día a día"",
+        ""description"": ""Almuerzos diarios entre semana."",
+        ""price"": ""10000"",
+        ""lat_addr"": ""23.898765"",
+        ""lon_addr"": ""12.87974"",
+        ""address"": ""Carrera 48 n° 150 A - 63 "",
+        ""state"": {
+            ""id"": 1,
+            ""name"": ""Active""
+        },
+        ""chef"": {
+            ""id"": 14,
+            ""id_profile"": 2,
+            ""id_state"": 1,
+            ""image_url"": ""def.png"",
+            ""full_name"": ""Dagoberto Pedraza"",
+            ""mail"": ""dago@globant.com"",
+            ""pass"": ""cdf4a007e2b02a0c49fc9b7ccfbb8a10c644f635e1765dcf2a7ab794ddc7edac"",
+            ""birthday"": ""1987-02-13"",
+            ""address"": ""Calle 170 n 56""
+        },
+        ""dishes"": [
+            {
+                ""id"": 3,
+                ""id_category"": 1,
+                ""id_state"": 1,
+                ""image_url"": ""pechuga-S76hjnHTy65.png"",
+                ""name"": ""Pechuga al ajillo"",
+                ""description"": ""Rica pechuga a la plancha combinada con el delicioso sabor del ajillo, acompañada con deliciosas papas a la francesa y ensalada al gusto"",
+                ""pivot"": {
+                    ""id_event"": 5,
+                    ""id_dish"": 3
+                }
+            },
+            {
+                ""id"": 5,
+                ""id_category"": 23,
+                ""id_state"": 1,
+                ""image_url"": ""burger-78uJHY654sP.png"",
+                ""name"": ""Hamurguesa de carne 200g"",
+                ""description"": ""Hamburguesa de carne con papas a la francesa"",
+                ""pivot"": {
+                    ""id_event"": 5,
+                    ""id_dish"": 5
+                }
+            },
+            {
+                ""id"": 6,
+                ""id_category"": 21,
+                ""id_state"": 1,
+                ""image_url"": ""cake-Jo987654QTyu.png"",
+                ""name"": ""cheesecake"",
+                ""description"": ""Delicioso cheesecake para pasar el mejor de mos momentos"",
+                ""pivot"": {
+                    ""id_event"": 5,
+                    ""id_dish"": 6
+                }
+            }
+        ]
+    }
+}"			

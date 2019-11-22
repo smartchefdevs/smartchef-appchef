@@ -6,7 +6,7 @@ import MenuHeader from '../components/Headers/MenuHeader';
 import LocalStorage from '../utils/LocalStorage';
 
 const options = [
-    {icon: require('../resources/imgs/general/home_black.png'), label:'Principal',module: 'Home'},
+    //{icon: require('../resources/imgs/general/home_black.png'), label:'Principal',module: 'Home'},
     {icon: require('../resources/imgs/general/event_black.png'), label:'Mis eventos', module: 'Event'},
     {icon: require('../resources/imgs/general/reservation_black.png'), label:'Reservas', module: 'Reservation'},
 ]

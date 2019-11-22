@@ -23,7 +23,6 @@ class MenuHeader extends React.Component{
 
     loadUser = async ()=>{
         var idUser = (await this.storage.getData(this.storage.USER_ID)).id;
-        console.log(idUser);
         this.service.getById(idUser,(json)=>{{this.success(json)}},(error)=>{{this.error(error)}});
     }
 
