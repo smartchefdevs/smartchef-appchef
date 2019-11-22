@@ -1,16 +1,31 @@
 import React from 'react';
 import {View, StyleSheet, ActivityIndicator, ImageBackground} from 'react-native';
+import LocalStorage from '../../utils/LocalStorage';
 
 class Welcome extends React.Component{
+
+    constructor(props){
+        super(props);
+
+        this.storage = new LocalStorage();
+    }
 
     componentDidMount(){
         this.init();
     }
 
-    init=()=>{
+    init = ()=>{
         setTimeout (() => {
-            this.props.navigation.replace('Login');
+            this.verifyLogin();               
         }, 3000);
+    }
+
+    verifyLogin = async ()=>{
+        if((await this.storage.getData(this.storage.USER_ID)) == null){
+            this.props.navigation.replace('Login');
+        } else {
+            this.props.navigation.replace('Home');
+        }
     }
 
     render(){

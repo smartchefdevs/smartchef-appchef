@@ -30,6 +30,29 @@ class FetchService{
             functionError(error);
         });
     }
+
+    get = (url,functionSuccess,functionError)=>{
+        fetch(url,{
+            method:'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type':'application/json'
+            },
+        })
+        .then((res)=>{
+            return res.json();
+        })
+        .then((json) =>{
+            if(json.id != 1){
+                functionError(json.msg);
+            } else {
+                functionSuccess(json);
+            }
+        })
+        .catch((error)=>{
+            functionError(error);
+        });
+    }
 }
 
 export default FetchService;

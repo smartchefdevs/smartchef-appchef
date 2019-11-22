@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, TextInput, Button, Alert, ActivityIndicator} from 'react-native';
+import LocalStorage from '../../utils/LocalStorage';
 
 import AuthService from '../../service/AuthService';
 
@@ -14,6 +15,7 @@ class FormLogin extends React.Component{
         };
 
         this.service = new AuthService();
+        this.storage = new LocalStorage();
     }
 
     login = ()=>{
@@ -90,10 +92,16 @@ class FormLogin extends React.Component{
     /**
      * Method to execute when fetch and the response is OK
      */
-    success = (json)=>{
-        this.launchAlert("Bienvenido " + json.user.full_name);
-        this.setState({loadingLogin:false});
-        this.props.navigation.replace('Home');
+    success = async (json)=>{
+        await this.storage.removeItem(this.storage.USER_ID);
+        if(await this.storage.saveData(this.storage.USER_ID,{id:json.user.id})){
+            this.launchAlert("Bienvenido " + json.user.full_name);
+            this.setState({loadingLogin:false});
+            this.props.navigation.replace('Home');
+        } else {
+            this.launchAlert("Hubo un error interno");
+            this.setState({loadingLogin:false});
+        }
     }
 
     /**

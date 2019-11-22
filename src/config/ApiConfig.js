@@ -13,7 +13,8 @@ const urlRoot = "http://ec2-34-207-127-183.compute-1.amazonaws.com:8000";
  */
 const ApiConfig = {
     authLogin: urlRoot + "/auth/login/chef",
-    register: urlRoot + "/user/create"
+    register: urlRoot + "/user/create",
+    userById: urlRoot + "/user/index/"
 }
 
 export default ApiConfig;
