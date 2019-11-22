@@ -11,7 +11,7 @@ class MenuHeader extends React.Component{
         super(props);
         this.state = {
             loadedData: false,
-            user:{}
+            user:null
         }
         this.service = new UserService();
         this.storage = new LocalStorage();
@@ -30,25 +30,13 @@ class MenuHeader extends React.Component{
     render(){
         return(
             <Card containerStyle={{marginTop: 5,width:'90%'}}>
-                <View style={{width:'100%',alignItems:'center',padding:20,justifyContent:'center', flexDirection:'row'}}>
-                    <Avatar rounded
-                        size="large"
-                        containerStyle={{flexDirection:'column'}}
-                        source={{
-                            uri:
-                            ImgConfig.users + 'dagoberto.png',
-                        }} />
-                    <View style={{justifyContent:'center',alignItems:'center',marginLeft:40,flexDirection:'column'}}>
-                        <Text style={{color: '#000',fontSize:17}}>Nombre</Text>
-                        <Text style={{color: '#000', marginTop:3,fontSize:12}}>Correo</Text>
-                    </View>
-                </View>
+                {this.renderInfo()}
             </Card>
         );
     }
 
     renderInfo = ()=>{
-        if(this.state.loadedData && this.state.user.length != 0){
+        if(this.state.loadedData && this.state.user != null){
             return(
                 <View style={{width:'100%',alignItems:'center',padding:20,justifyContent:'center', flexDirection:'row'}}>
                     <Avatar rounded
@@ -56,11 +44,11 @@ class MenuHeader extends React.Component{
                         containerStyle={{flexDirection:'column'}}
                         source={{
                             uri:
-                            ImgConfig.users + 'dagoberto.png',
+                            ImgConfig.users + this.state.user.image_url,
                         }} />
                     <View style={{justifyContent:'center',alignItems:'center',marginLeft:40,flexDirection:'column'}}>
-                        <Text style={{color: '#000',fontSize:17}}>Nombre</Text>
-                        <Text style={{color: '#000', marginTop:3,fontSize:12}}>Correo</Text>
+                        <Text style={{color: '#000',fontSize:17}}>{this.state.user.full_name}</Text>
+                        <Text style={{color: '#000', marginTop:3,fontSize:12}}>{this.state.user.mail}</Text>
                     </View>
                 </View>
             );
@@ -69,7 +57,7 @@ class MenuHeader extends React.Component{
 
     success = (json)=>{
         console.log(json.msg.id);
-        this.setState({loadUser:true});
+        this.setState({loadedData:true});
         this.setState({user:json.msg});
     }
 

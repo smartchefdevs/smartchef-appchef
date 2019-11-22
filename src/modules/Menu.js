@@ -3,6 +3,7 @@ import {ScrollView,View,StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {StackActions, NavigationActions} from 'react-navigation';
 import {Button, Avatar}  from 'react-native-elements';
 import MenuHeader from '../components/Headers/MenuHeader';
+import LocalStorage from '../utils/LocalStorage';
 
 const options = [
     {icon: require('../resources/imgs/general/home_black.png'), label:'Principal',module: 'Home'},
@@ -27,7 +28,17 @@ const Menu = (props)=>{
                         )
                     })}
                     <Button raised title='Salir'
-                        containerStyle={{marginBottom:20, width:'90%'}} />
+                        containerStyle={{marginBottom:20, width:'90%'}}
+                        onPress={async ()=>{
+                            var storage = new LocalStorage();
+                            await storage.removeAll();
+                            props.navigation.dispatch(
+                                StackActions.reset({
+                                    index: 0,
+                                    actions: [NavigationActions.navigate({ routeName: 'Login' })]
+                                })
+                            );
+                        }} />
                 </View>                
             </View>
         </ScrollView>
