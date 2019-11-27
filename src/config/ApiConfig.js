@@ -17,6 +17,7 @@ const ApiConfig = {
     userById: urlRoot + "/user/index/",
     eventsByChef: urlRoot + '/event/chef/',
     eventCreate: urlRoot + '/event/create',
+    eventUpdate: urlRoot + '/event/update',
     eventById: urlRoot + '/event/index/',
     eventDishCreate: urlRoot + '/event/dish'
 }

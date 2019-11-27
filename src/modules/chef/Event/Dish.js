@@ -1,30 +1,32 @@
 import React from 'react';
-import {ScrollView,View, ActivityIndicator, Alert,Text} from 'react-native';
+import {ScrollView,View, ActivityIndicator, Alert, Text} from 'react-native';
 import MainHeader from '../../../components/Headers/MainHeader';
 import HeaderEvents from '../../../components/Headers/HeaderEvents';
-import EventCard from '../../../components/Cards/EventCard';
+import DishCard from '../../../components/Cards/DishCard';
 import LocalStorage from '../../../utils/LocalStorage';
 import EventService from '../../../service/EventService';
 
-class Event extends React.Component{
+class Dish extends React.Component{
 
     constructor(props){
         super(props);
         this.state={
-            loadedEvents:false,
-            events:[]
+            loadedDishes:false,
+            dishes:[]
         }
         this.storage = new LocalStorage();
         this.service = new EventService();
+        this.idEvent = props.navigation.getParam('idEvent', 0);
     }
 
     componentDidMount(){
-        this.loadEvents();
+        this.loadDishes();
     }
 
-    loadEvents = async ()=>{
-        var idChef = (await this.storage.getData(this.storage.USER_ID)).id;
-        this.service.eventsByChef(idChef,(json)=>{{this.success(json)}},(msg)=>{{this.error(msg)}});
+    loadDishes = ()=>{
+        this.service.eventById(this.idEvent,
+                (json)=>{{this.success(json)}},
+                (msg)=>{{this.error(msg)}});
     }
 
     render(){
@@ -32,35 +34,35 @@ class Event extends React.Component{
             <View style={{flex:1}}>
                 <MainHeader navigation={this.props.navigation} />
                 <HeaderEvents 
-                    title='Eventos' 
+                    title='Platos' 
                     add={true} 
-                    onpress={()=>{this.props.navigation.navigate('EventNew')}} />
+                    onpress={()=>{this.props.navigation.navigate('DishNew',{idEvent:this.idEvent})}} />
                 <ScrollView>
-                    {this.renderEvents()}
+                    {this.renderDishes()}
                 </ScrollView>
             </View>
         );
     }
 
-    renderEvents = ()=>{
-        if(!this.state.loadedEvents){
+    renderDishes = ()=>{
+        if(!this.state.loadedDishes){
             return(
                 <ActivityIndicator size={70} color="#000" />
             );
-        } else if(this.state.events.length == 0){
+        } else if(this.state.dishes.length == 0){
             return(
                 <View style={{width:'100%',justifyContent:'center',alignItems:'center'}}>
-                    <Text>Vaya, parece que no tienes eventos</Text>
+                    <Text>Vaya, parece que no tienes platos</Text>
                 </View>
             );
         } else {
             return(
                 <View>
-                    {this.state.events.map((event,key)=>{
+                    {this.state.dishes.map((dish,key)=>{
                         return(
-                            <EventCard 
+                            <DishCard 
                                 key={key}
-                                event={event}
+                                dish={dish}
                                 navigation={this.props.navigation}
                                 />
                         );
@@ -71,8 +73,8 @@ class Event extends React.Component{
     }
 
     success = (json)=>{
-        this.setState({events:json.data});
-        this.setState({loadedEvents:true});
+        this.setState({dishes:json.data.dishes});
+        this.setState({loadedDishes:true});
     }
 
     /**
@@ -80,7 +82,7 @@ class Event extends React.Component{
      */
     error = (msg)=>{
         this.launchAlert(msg);
-        this.setState({loadedEvents:true});
+        this.setState({loadedDishes:true});
     }
 
     /**
@@ -91,4 +93,4 @@ class Event extends React.Component{
     }
 }
 
-export default Event;
+export default Dish;

@@ -1,6 +1,6 @@
 import React from 'react';
 import {ImageBackground, Text, View} from 'react-native';
-import {Button} from 'react-native-elements';
+import {Avatar} from 'react-native-elements';
 
 const HeaderEvents = (props)=>{
     return(
@@ -17,10 +17,9 @@ const HeaderEvents = (props)=>{
 
 const renderButton = (render, onpress)=>{
     if(render){
-        return(<Button 
-            raised
-            title='Agregar'
-            buttonStyle={{backgroundColor:'green'}}
+        return(<Avatar 
+            rounded
+            source={require('../../resources/imgs/general/plus-circle.png')}
             onPress={()=>{{onpress();}}}
             />);
     } else {

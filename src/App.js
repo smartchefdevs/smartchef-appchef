@@ -21,6 +21,9 @@ import Menu from './modules/Menu';
 import Event from './modules/chef/Event/Event';
 import Reservation from './modules/chef/Reservation/Reservation';
 import EventNew from './modules/chef/Event/EventNew';
+import EventEdit from './modules/chef/Event/EventEdit';
+import Dish from './modules/chef/Event/Dish';
+import DishNew from './modules/chef/Event/DishNew';
 
 const AppNavigator = createStackNavigator(
   {
@@ -31,7 +34,10 @@ const AppNavigator = createStackNavigator(
     Menu: Menu,
     Event: Event,
     Reservation: Reservation,
-    EventNew: EventNew
+    EventNew: EventNew,
+    EventEdit:EventEdit,
+    Dish:Dish,
+    DishNew: DishNew
   },
   {
     initialRouteName: 'Welcome',
