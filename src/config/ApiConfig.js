@@ -19,7 +19,8 @@ const ApiConfig = {
     eventCreate: urlRoot + '/event/create',
     eventUpdate: urlRoot + '/event/update',
     eventById: urlRoot + '/event/index/',
-    eventDishCreate: urlRoot + '/event/dish'
+    eventDishCreate: urlRoot + '/event/dish',
+    reservationFindAll: urlRoot + '/reservation/chef/',
 }
 
 export default ApiConfig;
